@@ -14,6 +14,7 @@
 | [`Soal 3`](#soal-3) |
 | [`Soal 4`](#soal-4) |
 | [`Soal 5`](#soal-5) |
+| [`Soal 6`](#soal-6) |
 | [`Soal 7`](#soal-7) |
 | [`Soal 8`](#soal-8) |
 | [`Soal 9`](#soal-9) |
@@ -26,7 +27,7 @@
 
 Konek ke server melalui netcat, didapatkan soal berikut:
 
-![Alt text](image.png)
+![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/d49e66a0-6635-4f59-9824-926e8d14fc47)
 
 Untuk menyelesaikan soal ini, cukup dengan mencari traffic yang berhubungan dengan ftp, dengan cara menambahkan filter berikut pada bagian filter
 ```
@@ -137,6 +138,24 @@ Your answer: 74.53.140.153
 
 *flag: Jarkom2023{k0w4lski_9894_uwNtNCSBtuC_4nalys1s}*
 
+### Soal 6
+
+![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/5fd7e9d3-f1e2-4cab-9109-333efd3f0615)
+
+Untuk menyelesaikan soal ini, kita perlu mengetahui cara kerja dari `substition chiper`, dimana setiap ankga koresponden terhadap satu huruf. Pada soal ini, setelah membeli hint sebanyak 20 poin, ternyata kita perlu melakukan substitusi pada source IP pada paket nomor 7812:
+
+Parse IP menjadi maksimal 26 untuk masing-masing pasang, maka jadilah hasilnya sebagai berikut:
+
+```
+10 4 18 14 10 1
+J  D  R  N  J A
+```
+
+![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/6517f035-9273-4714-8639-cf67dda0d011)
+
+*flag: Jarkom2023{h3h3_ctf_d1k1t_a02I82N695M4GTE1JGkx}*
+
+
 ### Soal 7
 
 ![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/4f88fcd7-2a9e-4778-8f27-a3f845ad44bc)
@@ -153,11 +172,46 @@ Jawaban: 6
 
 ![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/baf28201-6252-49c3-8fe3-43b8afac3d9a)
 
+Untuk mendapatkan semua packet yang menuju port 80, filter yang kita gunakan adalah `tcp.dstport == 80 || udp.dstport == 80`.
+
 Jawaban: `tcp.dstport == 80 || udp.dstport == 80`
 
 ![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/99bde921-dbd6-4705-9d7b-d0f5a49bd404)
 
 *flag: Jarkom2023{qu3ryyyyying_519743_PtBzAjNkQyP_15_fun}*
+
 ### Soal 9
+
+![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/febb0bb0-96af-4564-93d1-17720d3872c4)
+
+
+Untuk mendapatkan semua packet yang menuju port 80, filter yang kita gunakan adalah `ip.src == 10.51.40.1 && ip.dst != 10.39.55.34`.
+
+Jawaban: `ip.src == 10.51.40.1 && ip.dst != 10.39.55.34`.
+
+![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/4c02bb6a-4a6c-4487-ac24-d7237950affc)
+
+*flag: Jarkom2023{y3s_its_QgOmNjQkNjO_qu3ry1ng}*
+
 ### Soal 10
 
+![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/bca043cb-9c55-468b-a049-dec699008c95)
+
+untuk melakukan pencarian pada telnet, kita filter menggunakan protocol `telnet` pada box filter.
+
+Setelah itu coba cari packet yang memiliki length yang berbeda, hal ini dikarenakan size response pada login yang fail berbeda dengan ketika sukses.
+
+![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/d177038b-6d1e-487e-bbec-2c2126650b3c)
+
+Follow packet 231 dan cek apa isinya dengan `follow tcp`
+
+![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/25a88614-16fc-43a2-92e3-9f3b94cc957b)
+
+Yap benar saja, jadi username dan password yang benar adalah:
+
+`login: dhafin`
+`password: kesayangank0k0`
+
+![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/9c886304-1b77-488a-ba94-07da0ad9da52)
+
+*flag: Jarkom2023{t3lnet_is_zCx75B6C9CCxBxy03_N0tSecu2e}*
