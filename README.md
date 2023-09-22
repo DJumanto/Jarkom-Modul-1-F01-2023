@@ -55,9 +55,11 @@ Tinggal isi jawaban dari pertanyaannya dan didapatkan flag berikut:
 
 lakukan filter pada file pcapng dengan `http` sebagai object filter nya, lalu follow salah satu packet dengan `follow http` pada IP platform yakni http://10.21.78.111:8000/, dan lihat webserver apa yang digunakan:
 
-![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/935e2461-f6f6-46bc-8f0b-428f26801061)
+![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/c6832dee-6986-4ed3-8ab1-8b4bbc082b90)
 
 server yang digunakan adalah gunicorn. Submit ke server menggunakan nc dan dapatkan flag:
+
+![image](https://github.com/DJumanto/Jarkom-Modul-1-F01-2023/assets/100863813/935e2461-f6f6-46bc-8f0b-428f26801061)
 
 
 *flag: Jarkom2023{9unic0rn_1s_Ymxa12Vq6405JdN_c00l}*
